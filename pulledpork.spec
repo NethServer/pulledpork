@@ -3,7 +3,7 @@
 Summary:	Pulled Pork for Snort and Suricata rule management
 Name:		pulledpork
 Version:	0.7.2
-Release:	1%{?dist}
+Release:	2%{?dist}
 # contrib/oink-conv.pl is GPLv2+
 License:	GPLv2+
 URL:		https://github.com/shirkdog/pulledpork
@@ -71,6 +71,10 @@ done
 
 
 %changelog
+* Wed Nov 30 2016 Marcin Dulak <Marcin.Dulak@gmail.com> - 0.7.2-2
+- pulledpork.conf: IPRVersion needs to be path ending with slash
+- pulledpork.conf: version must match the pulledpork version
+
 * Tue Nov 08 2016 Marcin Dulak <Marcin.Dulak@gmail.com> - 0.7.2-1
 - version 0.7.2, based on https://github.com/jasonish/nsm-rpms
 
