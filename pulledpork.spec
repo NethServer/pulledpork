@@ -12,7 +12,7 @@ Source1:	%{name}.conf
 BuildArch:	noarch
 
 BuildRequires:	perl-generators
-BuildRequires:	perl
+BuildRequires:	perl-interpreter
 
 # Used by pulledpork to download rules, without it one gets errors like
 # Error 501 when fetching https://snort.org/downloads/community/community-rules.tar.gz.md5
