@@ -8,7 +8,7 @@
 Summary:	Pulled Pork for Snort and Suricata rule management
 Name:		pulledpork
 Version:	0.7.3
-Release:	3%{?dist}
+Release:	4%{?dist}
 # contrib/oink-conv.pl is GPLv2+
 License:	GPLv2+
 URL:		https://github.com/shirkdog/pulledpork
@@ -80,6 +80,9 @@ done
 
 
 %changelog
+* Sat Feb 02 2019 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.3-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Fri Jul 13 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.7.3-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
