@@ -1,0 +1,11 @@
+--- pulledpork.pl.orig	2017-12-07 16:13:06.000000000 +0100
++++ pulledpork.pl	2019-06-28 12:35:54.718322186 +0200
+@@ -1112,8 +1112,6 @@
+                                     =~ /^\s*#*\s*alert/i)
+                                 {
+                                     $$hashref{$gid}{$sid}{'rule'}
+-                                        =~ s/^\s*#*\s*//;
+-                                    $$hashref{$gid}{$sid}{'rule'}
+                                         =~ s/^alert/drop/;
+                                     if ($Verbose && !$Quiet) {
+                                         print "\tWill drop $gid:$sid\n";
