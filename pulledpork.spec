@@ -8,13 +8,14 @@
 Summary:	Pulled Pork for Snort and Suricata rule management
 Name:		pulledpork
 Version:	0.7.3
-Release:	5%{?dist}
+Release:	6%{?dist}
 # contrib/oink-conv.pl is GPLv2+
 License:	GPLv2+
 URL:		https://github.com/shirkdog/pulledpork
 Source0:	https://github.com/shirkdog/pulledpork/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:	%{name}.conf
 Patch0:		pulledpork-drop-enable.patch
+Patch1:		pulledpork-do-not-drop-noalert.patch
 BuildArch:	noarch
 
 BuildRequires:	perl-generators
@@ -81,6 +82,9 @@ done
 
 
 %changelog
+* Wed Nov 20 2019 Filippo Carletti <filippo.carletti@gmail.com> - 0.7.3-6
+- Don't drop rules with the noalert flowbit
+
 * Fri Jun 28 2019 Filippo Carletti <filippo.carletti@gmail.com> - 0.7.3-5
 - Don't drop disabled by default rules
 

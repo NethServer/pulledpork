@@ -1,0 +1,14 @@
+--- pulledpork.orig	2019-07-03 10:17:49.000000000 +0200
++++ pulledpork.pl	2019-11-20 19:05:27.057037763 +0100
+@@ -1109,7 +1109,9 @@
+                             elsif ($function eq "drop") {
+                                 if (exists $$hashref{$gid}{$sid}
+                                     && $$hashref{$gid}{$sid}{'rule'}
+-                                    =~ /^\s*#*\s*alert/i)
++                                    =~ /^\s*#*\s*alert/i
++                                    && $$hashref{$gid}{$sid}{'rule'}
++                                    !~ /flowbits\s*:\s*noalert/i)
+                                 {
+                                     $$hashref{$gid}{$sid}{'rule'}
+                                         =~ s/^alert/drop/;
+
