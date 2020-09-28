@@ -6,7 +6,7 @@
 %global etcfiles disablesid.conf dropsid.conf enablesid.conf modifysid.conf pulledpork.conf
 
 Summary:	Pulled Pork for Snort and Suricata rule management
-Name:		pulledpork
+Name:		pulledpork7
 Version:	0.7.3
 Release:	6%{?dist}
 # contrib/oink-conv.pl is GPLv2+
