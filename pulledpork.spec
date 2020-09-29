@@ -5,15 +5,18 @@
 
 %global etcfiles disablesid.conf dropsid.conf enablesid.conf modifysid.conf pulledpork.conf
 
+# define pulledpork real name
+%define pname pulledpork
+
 Summary:	Pulled Pork for Snort and Suricata rule management
-Name:		pulledpork
+Name:		pulledpork7
 Version:	0.7.3
-Release:	6%{?dist}
+Release:	7%{?dist}
 # contrib/oink-conv.pl is GPLv2+
 License:	GPLv2+
 URL:		https://github.com/shirkdog/pulledpork
-Source0:	https://github.com/shirkdog/pulledpork/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:	%{name}.conf
+Source0:	https://github.com/shirkdog/pulledpork/archive/v%{version}.tar.gz#/%{pname}-%{version}.tar.gz
+Source1:	%{pname}.conf
 Patch0:		pulledpork-drop-enable.patch
 Patch1:		pulledpork-do-not-drop-noalert.patch
 BuildArch:	noarch
@@ -39,7 +42,7 @@ Pulled Pork for Snort and Suricata rule management (from Google code).
 
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -n %{pname}-%{version}
 
 
 %build
@@ -47,41 +50,44 @@ Pulled Pork for Snort and Suricata rule management (from Google code).
 
 %install
 %{__install} -d -m 0755 $RPM_BUILD_ROOT/%{_bindir}
-%{__install} -d -m 0755 $RPM_BUILD_ROOT/%{_datadir}/%{name}
-%{__install} -d -m 0755 $RPM_BUILD_ROOT/%{_sysconfdir}/%{name}
+%{__install} -d -m 0755 $RPM_BUILD_ROOT/%{_datadir}/%{pname}
+%{__install} -d -m 0755 $RPM_BUILD_ROOT/%{_sysconfdir}/%{pname}
 
-%{__install} -m 0755 %{name}.pl $RPM_BUILD_ROOT/%{_bindir}/%{name}
-%{__sed} -i 's|#!/usr/bin/env perl|#!/usr/bin/perl -w|' $RPM_BUILD_ROOT/%{_bindir}/%{name}
+%{__install} -m 0755 %{pname}.pl $RPM_BUILD_ROOT/%{_bindir}/%{pname}
+%{__sed} -i 's|#!/usr/bin/env perl|#!/usr/bin/perl -w|' $RPM_BUILD_ROOT/%{_bindir}/%{pname}
 
-%{__cp} -rp contrib $RPM_BUILD_ROOT/%{_datadir}/%{name}
-%{__chmod} 0755 $RPM_BUILD_ROOT/%{_datadir}/%{name}/contrib/oink-conv.pl
+%{__cp} -rp contrib $RPM_BUILD_ROOT/%{_datadir}/%{pname}
+%{__chmod} 0755 $RPM_BUILD_ROOT/%{_datadir}/%{pname}/contrib/oink-conv.pl
 
 
 cd etc
 %{__rm} -f pulledpork.conf
 %{__cp} %{SOURCE1} .
 for file in disablesid.conf dropsid.conf enablesid.conf modifysid.conf pulledpork.conf; do
-    %{__install} -m 0664 $file $RPM_BUILD_ROOT/%{_sysconfdir}/%{name}
+    %{__install} -m 0664 $file $RPM_BUILD_ROOT/%{_sysconfdir}/%{pname}
 done
 
 
 %files
-%{_bindir}/%{name}
-%dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/contrib
-%{_datadir}/%{name}/contrib/oink-conv.pl
-%{_datadir}/%{name}/contrib/README.CONTRIB
-%dir %{_sysconfdir}/%{name}
-%config(noreplace) %{_sysconfdir}/%{name}/disablesid.conf
-%config(noreplace) %{_sysconfdir}/%{name}/dropsid.conf
-%config(noreplace) %{_sysconfdir}/%{name}/enablesid.conf
-%config(noreplace) %{_sysconfdir}/%{name}/modifysid.conf
-%config(noreplace) %{_sysconfdir}/%{name}/pulledpork.conf
+%{_bindir}/%{pname}
+%dir %{_datadir}/%{pname}
+%dir %{_datadir}/%{pname}/contrib
+%{_datadir}/%{pname}/contrib/oink-conv.pl
+%{_datadir}/%{pname}/contrib/README.CONTRIB
+%dir %{_sysconfdir}/%{pname}
+%config(noreplace) %{_sysconfdir}/%{pname}/disablesid.conf
+%config(noreplace) %{_sysconfdir}/%{pname}/dropsid.conf
+%config(noreplace) %{_sysconfdir}/%{pname}/enablesid.conf
+%config(noreplace) %{_sysconfdir}/%{pname}/modifysid.conf
+%config(noreplace) %{_sysconfdir}/%{pname}/pulledpork.conf
 %doc README.md doc/README.CATEGORIES doc/README.CHANGES doc/README.RULESET doc/README.SHAREDOBJECTS
 %license LICENSE
 
 
 %changelog
+* Tue Sep 29 2020 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 0.7.3-7
+- Rename to pulledpork7 - NethServer/dev#6287
+
 * Wed Nov 20 2019 Filippo Carletti <filippo.carletti@gmail.com> - 0.7.3-6
 - Don't drop rules with the noalert flowbit
 
